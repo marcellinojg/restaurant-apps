@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+$phone: 480px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1200px;
+$large-display: 1920px;
+$primary-font: "Lato", sans-serif;
+$primary-color-dark: #023179;
+$primary-color: #003b91;
+$secondary-color: #fdf6d6;
+$secondary-color-dark: rgb(218, 212, 186);
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $primary-font;
+    background-color: $secondary-color;
+    overflow-x: hidden;
+}
+
+textarea{
+    resize: none;
+    overflow: auto;
+    font-family: $primary-font;
+    
+}
+@mixin resizeFont($size) {
+    $result: $size;
+    @media only screen and (max-width: $large-display) {
+        $result: $size * 1.5;
+        font-size: $result;
+    }
+    @media only screen and (max-width: $tablet) {
+        $result: $size * 1.25;
+        font-size: $result;
+    }
+    @media only screen and (max-width: $phone) {
+        $result: $size * 1;
+        font-size: $result;
+    }
+}
+
+@mixin shadow() {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@mixin useTransition($duration) {
+    transition: all;
+    transition-duration: $duration;
+}
+
+@mixin minimumTouch() {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+@mixin flexRow($justify, $align, $gap) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin flexCol($justify, $align, $gap) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin minimumScreen(){
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+@mixin breakpoint($point) {
+    @if $point == "lg" {
+        @media only screen and (max-width: $desktop) {
+            @content;
+        }
+    } @else if $point == "md" {
+        @media only screen and (max-width: $laptop) {
+            @content;
+        }
+    } @else if $point == "sm" {
+        @media only screen and (max-width: $phone) {
+            @content;
+        }
+    }
+}

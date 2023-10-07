@@ -1,0 +1,205 @@
+@import "./helper.scss";
+
+main {
+    .detail-wrapper {
+        background-color: white;
+        max-width: 900px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        position: relative;
+        margin: 15vh auto;
+        margin-bottom: 10vh;
+
+        img {
+            width: 100%;
+        }
+
+        button.back {
+            @include minimumTouch();
+            @include useTransition(300ms);
+            @include flexRow(center, center, 10px);
+            @include shadow();
+            background-color: $primary-color;
+            position: absolute;
+            padding: 0px 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 17px;
+            border-radius: 8px;
+            top: 15px;
+            transform: translateX(-10%);
+            cursor: pointer;
+
+            svg {
+                width: 22px;
+            }
+        }
+
+        button.back:hover {
+            background-color: $primary-color-dark;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 25px;
+        }
+        h1 {
+            text-align: start;
+        }
+        span.city {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            margin-top: 5px;
+            color: grey;
+            margin-top: -15px;
+
+            svg {
+                width: 22px;
+            }
+        }
+        p {
+            text-align: justify;
+        }
+        h2 {
+            @include resizeFont(20px);
+            font-weight: bold;
+            color: $primary-color;
+        }
+        h3 {
+            @include resizeFont(16px);
+            color: $primary-color;
+        }
+
+        .menu {
+            .food,
+            .drink {
+                margin-top: 15px;
+            }
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-left: 25px;
+                margin-top: 10px;
+            }
+        }
+    }
+
+    @include breakpoint("md") {
+        .detail-wrapper {
+            margin: 8vh 5vw;
+            margin-top: 10vh;
+        }
+    }
+
+    @include breakpoint("sm") {
+        .detail-wrapper {
+            margin-top: 15vh;
+        }
+    }
+
+    #favoriteBtn,
+    #reviewBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 50px;
+        background-color: #e00218b7;
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+        cursor: pointer;
+        transition: all;
+        transition-duration: 300ms;
+
+        svg {
+            width: 33px;
+        }
+    }
+
+    #favoriteBtn:hover {
+        background-color: #c5010bcf;
+    }
+    #reviewBtn {
+        margin-top: 10px;
+        margin-bottom: -8px;
+        background-color: $primary-color;
+    }
+    #reviewBtn:hover {
+        background-color: $primary-color-dark;
+    }
+}
+
+.review {
+    .review-title {
+        display: flex;
+        justify-content: start;
+        gap: 10px;
+        align-items: center;
+        .pill {
+            display: flex;
+            align-items: center;
+            background-color: $primary-color;
+            color: white;
+            font-weight: bold;
+            padding: 7px 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            gap: 5px;
+            svg {
+                color: black;
+                width: 18px;
+                fill: rgb(236, 206, 61);
+            }
+        }
+    }
+
+    .review-list {
+        @include flexCol(center, stretch, 15px);
+        margin-top: 10px;
+
+
+        .review-card {
+            @include flexRow(start, center, 15px);
+            @include shadow();
+            padding: 10px;
+            background-color: $secondary-color;
+
+            img.avatar {
+                width: 15%;
+                max-width: 55px;
+                aspect-ratio: 1/1;
+                object-fit: contain;
+                border-radius: 100%;
+            }
+
+            .review-name {
+                font-weight: bold;
+                font-size: 18px;
+            }
+            .review-date {
+                font-size: 14px;
+                color: rgb(112, 112, 112);
+            }
+            p {
+                text-align: start;
+            }
+
+            @include breakpoint("md") {
+                .review-name {
+                    font-size: 16px;
+                }
+                .review-date {
+                    font-size: 12px;
+                }
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,340 @@
+@import "./helper.scss";
+
+.skip-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    background-color: $primary-color;
+    color: $secondary-color;
+    font-weight: bold;
+    padding: 8px;
+    z-index: 100;
+    border-radius: 5px;
+    min-width: 44px;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+.skip-link:focus {
+    top: 100px;
+}
+
+nav {
+    top: 0;
+    background-color: $primary-color;
+    padding: 0px 5vw;
+    position: fixed;
+    width: 100vw;
+    box-sizing: border-box;
+    z-index: 2;
+
+    div.nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+
+        button {
+            background-color: transparent;
+            border: 2px solid $secondary-color;
+            min-width: 44px;
+            min-height: 44px;
+            border-radius: 4px;
+            color: $secondary-color;
+            padding: 0px 20px;
+            margin: 15px 0px;
+
+            cursor: pointer;
+            transition: all;
+            transition-duration: 300ms;
+            display: none;
+            svg {
+                width: 15px;
+                scale: 2;
+            }
+        }
+
+        @include breakpoint("md") {
+            button {
+                display: block;
+            }
+        }
+
+        button:hover,
+        button:focus {
+            background-color: $secondary-color;
+            color: $primary-color;
+        }
+
+        .large-display-menu {
+            align-self: center;
+            height: 100%;
+            display: flex;
+            width: 400px;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                min-width: 44px;
+                min-height: 80px;
+                text-align: center;
+                flex-grow: 1;
+                text-decoration: none;
+                color: $secondary-color;
+                font-weight: bold;
+                transition: all;
+                transition-duration: 300ms;
+                border-color: transparent;
+                @include resizeFont(12px);
+            }
+
+            a:hover {
+                background-color: $primary-color-dark;
+                text-decoration: underline;
+                text-underline-offset: 10px;
+            }
+        }
+
+        @include breakpoint("md") {
+            .large-display-menu {
+                display: none;
+            }
+        }
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 0px;
+        text-decoration: none;
+
+        img {
+            width: 45px;
+        }
+        span {
+            font-weight: bold;
+            color: $secondary-color;
+            @include resizeFont(16px);
+        }
+    }
+
+    .mobile-display-menu {
+        position: fixed;
+        top: 0;
+        left: 100vw;
+        width: 100vw;
+        height: 100vh;
+        background-color: $secondary-color;
+        z-index: 10;
+        transition: all;
+        transition-duration: 400ms;
+        display: none;
+        box-sizing: border-box;
+
+        opacity: 0;
+
+        button {
+            background-color: $primary-color;
+            min-width: 50px;
+            min-height: 50px;
+            width: 8vw;
+            height: 8vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $secondary-color;
+            border-radius: 50%;
+            align-self: flex-end;
+            margin: 15px;
+            cursor: pointer;
+
+            svg {
+                width: 50%;
+            }
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 15px 5vw;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 44px;
+                min-height: 44px;
+                text-decoration: none;
+                color: $primary-color;
+                font-weight: bold;
+                font-size: 18px;
+                border-color: $primary-color;
+                border-width: 2px 0px 0px 0px;
+                padding: 5px 15px;
+                transition: all;
+                transition-duration: 300ms;
+            }
+
+            a:nth-last-child(1) {
+                border-width: 2px 0px 2px 0px;
+            }
+
+            a:hover,
+            a.active {
+                background-color: $primary-color;
+                color: $secondary-color;
+            }
+        }
+
+        .brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 35px;
+            }
+            span {
+                font-weight: bold;
+                color: $primary-color;
+                @include resizeFont(18px);
+            }
+        }
+    }
+
+    .mobile-display-menu.active {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+
+    @include breakpoint("md") {
+        .mobile-display-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+}
+
+footer {
+    background-color: $primary-color;
+    color: $secondary-color;
+
+    .wrapper {
+        padding: 25px 12.5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+
+        .identity {
+            margin-right: 10vw;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img {
+                    width: 45px;
+                }
+                span {
+                    font-weight: bold;
+                    color: $secondary-color;
+                    @include resizeFont(16px);
+                }
+            }
+            p {
+                font-style: italic;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .social-media {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-top: 8px;
+                a {
+                    fill: $secondary-color;
+                    transition: all;
+                    transition-duration: 300ms;
+                    svg {
+                        min-width: 44px;
+                        min-height: 44px;
+                    }
+                }
+                a:hover {
+                    fill: $secondary-color-dark;
+                }
+            }
+        }
+
+        .sitemap {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 10px;
+
+            h1 {
+                @include resizeFont(16px);
+                font-weight: bold;
+            }
+
+            .links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                a {
+                    display: flex;
+                    align-items: center;
+                    min-width: 44px;
+                    min-height: 44px;
+                    text-decoration: none;
+                    color: $secondary-color;
+                    transition: all;
+                    transition-duration: 300ms;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .copyright {
+        margin: auto;
+        padding: 15px 0px;
+        width: 75%;
+        text-align: center;
+        border-top: 2px solid $secondary-color;
+    }
+
+    @include breakpoint("md") {
+        .wrapper {
+            padding: 25px 5vw;
+            flex-direction: column;
+            justify-content: start;
+            gap: 25px;
+            margin-right: 5vw;
+
+            .identity {
+                p {
+                    text-align: start;
+                }
+            }
+        }
+
+        .copyright {
+            text-align: center;
+            width: 90%;
+        }
+    }
+}

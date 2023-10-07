@@ -1,0 +1,122 @@
+@import "./helper.scss";
+
+.modal-wrapper {
+    @include minimumScreen();
+    @include flexRow(center, center, 0);
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.496);
+}
+
+.modal {
+    @include flexCol(center, stretch, 10px);
+    padding: 20px 20px;
+    background-color: white;
+    width: 35vw;
+    @include breakpoint("md") {
+        width: 60vw;
+    }
+    @include breakpoint("sm") {
+        width: 80vw;
+    }
+}
+
+.modal-header {
+    @include flexRow(space-between, center, 0);
+
+    span {
+        font-weight: bold;
+        font-size: 20px;
+        color: $primary-color-dark;
+    }
+
+    button {
+        @include useTransition(300ms);
+        @include minimumTouch();
+        cursor: pointer;
+        border-radius: 100%;
+        background-color: rgb(169, 0, 0);
+        color: white;
+    }
+
+    button:hover {
+        background-color: rgb(126, 0, 0);
+    }
+
+    svg {
+        margin: auto;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.modal-body {
+    @include flexCol(center, stretch, 15px);
+    padding: 10px 0px;
+    border-width: 2px 0px 2px 0px;
+    border-color: $primary-color-dark;
+    flex-grow: 1;
+
+    .input-wrapper {
+        @include flexCol(center, stretch, 8px);
+        padding-bottom: 10px;
+        label{
+            font-weight: bold;
+        }
+
+        input {
+            outline: none;
+            padding: 15px;
+            border: 2px solid $primary-color;
+            border-radius: 10px;
+        }
+
+        textarea {
+            outline: none;
+            height: 100px;
+            padding: 15px;
+            border: 2px solid $primary-color;
+            border-radius: 10px;
+        }
+    }
+}
+
+.modal-footer {
+    @include flexRow(center, center, 10px);
+    @include breakpoint("md") {
+        flex-direction: column;
+        button {
+            width: 100%;
+        }
+    }
+    button {
+        @include useTransition(300ms);
+        border-radius: 50px;
+        flex-grow: 1;
+        padding: 15px 0px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button.primary {
+        background-color: $primary-color;
+        color: white;
+    }
+    button.primary:hover {
+        background-color: $primary-color-dark;
+    }
+
+    button.secondary {
+        border: 2px solid rgb(169, 0, 0);
+    }
+
+    button.secondary:hover {
+        color: white;
+        background-color: rgb(169, 0, 0);
+    }
+}

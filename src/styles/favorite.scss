@@ -1,0 +1,106 @@
+@import "./helper.scss";
+
+.favorite-title {
+    margin-top: 15vh;
+}
+
+.no-favorite-wrapper {
+    min-width: 100vw;
+    min-height: 100vh;
+    @include flexRow(center, center, 0);
+}
+
+.no-favorite-card {
+    @include shadow;
+    @include flexRow(start, center, 0);
+
+    width: 65%;
+    background-color: white;
+    padding: 10vh 50px;
+
+    aside {
+        width: 80%;
+        img {
+            min-width: 250px;
+            border-radius: 100%;
+        }
+    }
+
+    article {
+        padding: 0px 5%;
+        h1 {
+            @include resizeFont(22px);
+            text-align: start;
+        }
+        p {
+            margin-top: 10px;
+            text-align: justify;
+        }
+        a {
+            text-decoration: none;
+            button {
+                background-color: $primary-color;
+                width: 100%;
+                padding: 15px 10px;
+                min-width: 44px;
+                min-height: 44px;
+                font-weight: bold;
+                border-radius: 50px;
+                margin-top: 30px;
+                cursor: pointer;
+                transition: all;
+                transition-duration: 300ms;
+                font-size: large;
+                display: block;
+                color: white;
+            }
+            button:hover {
+                background-color: $primary-color-dark;
+            }
+        }
+    }
+}
+
+@include breakpoint("md") {
+    .favorite-title {
+        margin-top: 10vh;
+    }
+    .no-favorite-card {
+        width: 80%;
+        h1 {
+            margin-top: 5vh;
+        }
+        aside {
+            width: auto;
+            img {
+                width: 700px;
+                border-radius: 100%;
+            }
+        }
+        article {
+            padding: 0px 35px;
+        }
+    }
+}
+
+@include breakpoint("sm") {
+    .favorite-title {
+        margin-top: 15vh;
+    }
+    .no-favorite-card {
+        box-sizing: border-box;
+        width: 90%;
+        flex-direction: column;
+        margin: 10vh 0;
+        margin-top: 20vh;
+        padding: 30px;
+        
+
+        article {
+            width: 100%;
+            button {
+                font-size: medium;
+            }
+        }
+    }
+}
